@@ -1,0 +1,17 @@
+.language-switcher {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 5px;
+    width: 160px;
+  }
+
+  &__item {
+    justify-content: initial;
+
+    &-check-icon {
+      margin-left: auto;
+    }
+  }
+}

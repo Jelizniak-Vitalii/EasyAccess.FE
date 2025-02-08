@@ -1,0 +1,15 @@
+@use 'media' as *;
+
+:root {
+  --app-space-s: 1rem;
+  --app-space-m: 1.5rem;
+  --app-space-l: 2rem;
+  --app-space-xl: 3rem;
+
+  @media #{$tui-mobile} {
+    --app-space-s: 0.5rem;
+    --app-space-m: 1rem;
+    --app-space-l: 1.5rem;
+    --app-space-xl: 2.5rem;
+  }
+}

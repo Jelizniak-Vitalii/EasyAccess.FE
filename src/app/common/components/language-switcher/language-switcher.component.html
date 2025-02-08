@@ -1,0 +1,38 @@
+<button
+  tuiIconButton
+  size="m"
+  appearance="flat"
+  iconStart="@tui.globe"
+  [tuiDropdown]="dropdownContent"
+  [tuiDropdownManual]="isDropdownOpen()"
+  (click)="updateDropDownOpen(!isDropdownOpen())"
+  (tuiObscured)="onObscured($event)"
+  (tuiActiveZoneChange)="onActiveZone($event)"
+></button>
+
+<ng-template #dropdownContent>
+  <div class="dropdown">
+    <div class="language-switcher__wrapper">
+      @for (language of languages; track language) {
+        <button
+          tuiButton
+          size="s"
+          type="button"
+          appearance="flat"
+          class="language-switcher__item"
+          (click)="onClickSelectLang(language.id)"
+        >
+          <tui-avatar
+            size="xs"
+            [src]="language.icon"
+          />
+          {{language.title | translate}}
+
+          @if (activeLang() === language.id) {
+            <tui-icon class="language-switcher__item-check-icon" icon="@tui.check"></tui-icon>
+          }
+        </button>
+      }
+    </div>
+  </div>
+</ng-template>

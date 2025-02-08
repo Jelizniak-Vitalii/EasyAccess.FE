@@ -1,0 +1,39 @@
+<!--<div-->
+<!--  class="side-bar"-->
+<!--  [class.collapsed]="isSideBarCollapsed"-->
+<!--&gt;-->
+<!--  <div class="side-bar__logo-wrapper">-->
+<!--    <tui-svg-->
+<!--      class="side-bar__logo"-->
+<!--      [src]="isSideBarCollapsed || (breakPointService | async) === 'mobile' ? 'assets/images/icons/logos/easy2book_blue.svg' : 'assets/images/icons/logos/easy2book_icon.svg'"-->
+<!--    ></tui-svg>-->
+<!--  </div>-->
+
+<!--  <button-->
+<!--    tuiIconButton-->
+<!--    size="xs"-->
+<!--    type="button"-->
+<!--    appearance="outline"-->
+<!--    class="side-bar__collapse-button"-->
+<!--    [icon]="isSideBarCollapsed ? 'tuiIconChevronLeft' : 'tuiIconChevronRight'"-->
+<!--    (click)="updateSideBarState()"-->
+<!--  ></button>-->
+
+<!--  <ng-container *ngFor="let item of sideBarItems">-->
+<!--    <div-->
+<!--      *ngIf="item.active"-->
+<!--      class="side-bar__item tui-text_body-s"-->
+<!--      routerLinkActive="active"-->
+<!--      tuiHintDirection="right"-->
+<!--      [routerLink]="item.route"-->
+<!--      [tuiHint]="!isSideBarCollapsed ? (item.title | translate) : ''"-->
+<!--      [tuiHintAppearance]="'onDark'"-->
+<!--      (click)="selectItem.emit()"-->
+<!--    >-->
+<!--      <tui-svg [src]="item.icon"></tui-svg>-->
+<!--      <span class="side-bar__item-text">-->
+<!--        {{item.title | translate}}-->
+<!--      </span>-->
+<!--    </div>-->
+<!--  </ng-container>-->
+<!--</div>-->

@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  height: 100%;
+}
+
+.layout {
+  &__content {
+    width: 100%;
+  }
+
+  &__main {
+    width: 100%;
+    height: calc(100% - 55px);
+    background-color: #f2f3f7;
+  }
+}

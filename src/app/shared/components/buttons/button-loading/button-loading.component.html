@@ -1,0 +1,12 @@
+<button
+  tuiButton
+  [type]="type()"
+  [loading]="loadingService.loadingSignal()"
+  [size]="size()"
+  [appearance]="appearance()"
+  [disabled]="disabled()"
+  [ngStyle]="{ 'width': fullWidth() && '100%' }"
+  (click)="click.emit()"
+>
+  {{name() | translate}}
+</button>

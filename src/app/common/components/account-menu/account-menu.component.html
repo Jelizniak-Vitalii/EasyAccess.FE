@@ -1,0 +1,46 @@
+<tui-avatar
+  size="s"
+  class="account-menu-avatar"
+  [tuiDropdown]="dropdownContent"
+  [tuiDropdownManual]="isDropdownOpen()"
+  [src]="user()?.image || shortUserName()"
+  [style.background]="shortUserName() | tuiAutoColor"
+  (click)="updateDropDownOpen(!isDropdownOpen())"
+  (tuiObscured)="onObscured($event)"
+  (tuiActiveZoneChange)="onActiveZone($event)"
+></tui-avatar>
+
+<ng-template #dropdownContent>
+  <div class="dropdown">
+    <div class="account-menu__header">
+      <div class="account-menu__header-title tui-text_body-xl">{{user()?.firstName}} {{user()?.lastName}}</div>
+      <div class="account-menu__header-email">{{user()?.email}}</div>
+    </div>
+
+   <div class="account-menu__wrapper">
+     <button
+       tuiButton
+       size="s"
+       type="button"
+       appearance="flat"
+       class="account-menu__item"
+       iconStart="@tui.settings"
+       [routerLink]="'/settings'"
+     >
+       {{'general.settings' | translate}}
+     </button>
+
+     <button
+       tuiButton
+       size="s"
+       type="button"
+       appearance="flat"
+       class="account-menu__item"
+       iconStart="@tui.log-out"
+       (click)="authStore.logout()"
+     >
+       {{'general.logout' | translate}}
+     </button>
+   </div>
+  </div>
+</ng-template>

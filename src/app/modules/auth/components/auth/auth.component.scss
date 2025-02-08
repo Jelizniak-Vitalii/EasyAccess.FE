@@ -1,0 +1,39 @@
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 100vh;
+  padding: 0 20px;
+  position: relative;
+
+  &__wrapper {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  &__content {
+    width: 100%;
+    box-shadow: var(--tui-shadow-medium);
+    padding: var(--app-space-xl) var(--app-space-m);
+    border-radius: var(--tui-radius-m);
+  }
+
+  &__header {
+    margin-bottom: var(--app-space-s);
+
+    &-title {
+      margin-bottom: 5px;
+    }
+  }
+
+  &__forgot-password {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--app-space-s);
+  }
+
+  &__button {
+    width: 100%;
+  }
+}

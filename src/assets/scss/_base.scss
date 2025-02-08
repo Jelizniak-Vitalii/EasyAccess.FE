@@ -1,0 +1,40 @@
+tui-root {
+  height: 100%;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff !important;
+  overflow-y: hidden;
+}
+
+button,
+button:active {
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+
+h1,h2,h3,h4,h5 {
+  margin: 0;
+}

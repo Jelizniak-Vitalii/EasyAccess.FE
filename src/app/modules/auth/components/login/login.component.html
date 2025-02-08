@@ -1,1 +1,53 @@
-<p>login works!</p>
+<form [formGroup]="authForm" (ngSubmit)="login()">
+  <div class="auth__header">
+    <h3 class="auth__header-title tui-text_h6">
+      {{'auth.loginTittle' | translate}}
+    </h3>
+
+    <p class="tui-text_body-s">
+      {{'auth.dontHaveAccount' | translate}}
+      <a tuiLink routerLink="/auth/registration">{{'auth.signUp' | translate}}</a>
+    </p>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input formControlName="email">
+      {{'general.email' | translate}}
+      <input tuiTextfieldLegacy type="email"/>
+    </tui-input>
+    <tui-error
+      formControlName="email"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-textfield>
+      <label tuiLabel>{{'general.password' | translate}}</label>
+      <input
+        tuiTextfield
+        type="password"
+        formControlName="password"
+      />
+      <tui-icon tuiPassword/>
+    </tui-textfield>
+    <tui-error
+      formControlName="password"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="auth__forgot-password">
+    <p class="tui-text_body-s">
+      <a tuiLink routerLink="/auth/forgot-password">{{'auth.forgotPassword' | translate}}</a>
+    </p>
+  </div>
+
+  <div class="tui-form__buttons">
+    <app-button-loading
+      type="submit"
+      name="auth.login"
+      class="tui-form__button auth__button"
+    ></app-button-loading>
+  </div>
+</form>

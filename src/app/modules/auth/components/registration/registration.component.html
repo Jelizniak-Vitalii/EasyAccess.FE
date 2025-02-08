@@ -1,1 +1,62 @@
-<p>registration works!</p>
+<form [formGroup]="authForm" (ngSubmit)="registration()">
+  <div class="auth__header">
+    <h3 class="auth__header-title tui-text_h6">
+      {{'auth.registrationTittle' | translate}}
+    </h3>
+
+    <p class="tui-text_body-s">
+      {{'auth.alreadyHaveAccount' | translate}}
+      <a tuiLink routerLink="/auth/login">{{'auth.signIn' | translate}}</a>
+    </p>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input formControlName="firstName">
+      {{'general.firstName' | translate}}
+      <span class="tui-required"></span>
+    </tui-input>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input formControlName="lastName">
+      {{'general.lastName' | translate}}
+      <span class="tui-required"></span>
+    </tui-input>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-input formControlName="email">
+      {{'general.email' | translate}}
+      <input tuiTextfieldLegacy type="email"/>
+      <span class="tui-required"></span>
+    </tui-input>
+    <tui-error
+      formControlName="email"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-textfield>
+      <label tuiLabel>{{'general.password' | translate}}</label>
+      <input
+        tuiTextfield
+        type="password"
+        formControlName="password"
+      />
+      <tui-icon tuiPassword/>
+    </tui-textfield>
+    <tui-error
+      formControlName="password"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </div>
+
+  <div class="tui-form__buttons">
+    <app-button-loading
+      type="submit"
+      name="auth.registration"
+      class="tui-form__button auth__button"
+    ></app-button-loading>
+  </div>
+</form>

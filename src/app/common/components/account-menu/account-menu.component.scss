@@ -1,0 +1,33 @@
+.account-menu {
+  &-avatar {
+    cursor: pointer;
+  }
+
+  &__header {
+    padding: 10px;
+    border-bottom: 1px solid #dcdfe4;
+    text-align: center;
+
+    &-title {
+      color: #212636;
+      font-weight: bold;
+    }
+
+    &-email {
+      color: #667085;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  &__item {
+    justify-content: normal;
+    gap: 10px;
+    color: #212636;
+  }
+}

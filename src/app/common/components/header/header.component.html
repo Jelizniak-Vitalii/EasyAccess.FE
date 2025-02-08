@@ -1,0 +1,40 @@
+<header class="header">
+  <button
+    tuiIconButton
+    type="button"
+    iconStart="@tui.menu"
+    appearance="flat"
+    size="xs"
+    class="header__side-bar-open-icon"
+    (click)="updateSideBarMenuState(true)"
+  ></button>
+
+  <div class="header__actions">
+    <app-language-switcher
+    ></app-language-switcher>
+    <app-account-menu
+      [user]="user()"
+    ></app-account-menu>
+  </div>
+
+  <tui-drawer
+    *tuiPopup="sideBarMenuState()"
+    direction="left"
+    class="header__side-bar-wrapper"
+    (click.self)="updateSideBarMenuState(false)"
+  >
+    <div class="header__side-bar-header">
+      <button
+        tuiIconButton
+        type="button"
+        class="header__menu-icon"
+        iconStart="@tui.circle-x"
+        appearance="flat"
+        size="m"
+        (click)="updateSideBarMenuState(false)"
+      ></button>
+    </div>
+
+    <app-side-bar></app-side-bar>
+  </tui-drawer>
+</header>
