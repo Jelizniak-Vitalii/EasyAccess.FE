@@ -1,13 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-// import { TuiLanguageSwitcher } from '@taiga-ui/i18n';
-import { LoadingService } from '@shared/services/loading.service';
-import { LocalStorageService } from '@shared/services/local-storage.service';
-import { appConfig } from '@configs/app.config';
-import { languages } from '@configs/lang.config';
 import { TuiLanguageSwitcherService } from '@taiga-ui/i18n';
-// import { appConfig } from '@configs/app.config';
-// import { languages } from '@configs/lang.config';
+
+import { LoadingService, LocalStorageService } from '@shared/services';
+import { appConfig, languages } from '@configs/index';
 
 @Injectable({
   providedIn: 'root'

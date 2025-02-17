@@ -1,37 +1,28 @@
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  inject,
-  Output
+  output
 } from '@angular/core';
-import { TuiBreakpointService } from '@taiga-ui/core';
+import { TuiIcon } from '@taiga-ui/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { appConfig } from '@configs/app.config';
-import { LocalStorageService } from '@shared/services';
+import { sideBarComponentConfig } from './side-bar.component.config';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: 'side-bar.component.html',
   styleUrls: ['side-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     TranslateModule,
+    TuiIcon,
+    RouterLink,
+    RouterLinkActive,
   ]
 })
 export class SideBarComponent {
-  @Output() selectItem: EventEmitter<void> = new EventEmitter();
+  readonly selectItem = output<void>();
 
-  private readonly localStorageService = inject(LocalStorageService);
-  public readonly breakPointService = inject(TuiBreakpointService);
-
-  sideBarItems = appConfig.sideBarItems;
-  isSideBarCollapsed: boolean = this.localStorageService.getSideBarMenuState();
-
-  updateSideBarState() {
-    this.isSideBarCollapsed = !this.isSideBarCollapsed;
-    this.localStorageService.setSideBarMenuState(this.isSideBarCollapsed);
-  }
+  readonly items = sideBarComponentConfig.items;
 }

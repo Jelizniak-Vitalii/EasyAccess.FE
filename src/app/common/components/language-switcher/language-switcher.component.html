@@ -20,7 +20,7 @@
           type="button"
           appearance="flat"
           class="language-switcher__item"
-          (click)="onClickSelectLang(language.id)"
+          (click)="onClickSelectLang(language.id); updateDropDownOpen(!isDropdownOpen())"
         >
           <tui-avatar
             size="xs"

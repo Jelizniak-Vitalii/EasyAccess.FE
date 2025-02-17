@@ -43,7 +43,7 @@ export class RegistrationComponent {
   private readonly authStore = inject(AuthStore);
 
   readonly authForm = this.authDataService.generateRegistrationForm({
-    email: environment.production ? '' : 'v.jelizniak@gmail.com',
+    email: environment.production ? '' : 'test@gmail.com',
     password: environment.production ? '' : '123456',
     firstName: environment.production ? '' : 'Vitalii',
     lastName: environment.production ? '' : 'Zhelizniak'

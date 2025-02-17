@@ -2,7 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  inject, OnInit
+  inject,
+  OnInit
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgProgressComponent } from 'ngx-progressbar';
@@ -18,7 +19,14 @@ import { LayoutComponent } from '@common/components/layout/layout.component';
   selector: 'app-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, TuiRoot, NgProgressComponent, NgxSpinnerComponent, TuiScrollbar, LayoutComponent]
+  imports: [
+    RouterOutlet,
+    TuiRoot,
+    NgProgressComponent,
+    NgxSpinnerComponent,
+    TuiScrollbar,
+    LayoutComponent
+  ]
 })
 export class AppComponent implements OnInit {
   private readonly localizationService = inject(LocalizationService);

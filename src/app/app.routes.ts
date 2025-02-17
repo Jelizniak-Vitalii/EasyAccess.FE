@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+
 import { authGuard, isAuthorizedGuard } from '@modules/auth/guards';
 
 export const routes: Routes = [
@@ -13,8 +14,13 @@ export const routes: Routes = [
     canMatch: [isAuthorizedGuard]
   },
   {
+    path: 'settings',
+    loadComponent: () => import('@modules/settings/components/settings/settings.component').then(m => m.SettingsComponent),
+    canMatch: [isAuthorizedGuard]
+  },
+  {
     path: '',
     redirectTo: 'auth',
-    pathMatch: 'full',
-  },
+    pathMatch: 'full'
+  }
 ];

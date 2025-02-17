@@ -1,23 +1,27 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
+  inject,
   input,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TuiButton, TuiPopup } from '@taiga-ui/core';
 import { TuiDrawer } from '@taiga-ui/kit';
 
-import { User } from '@shared/models';
+import { Language, User } from '@shared/models';
+import { LocalizationService } from '@shared/services';
 import { SideBarComponent } from '@common/components/side-bar/side-bar.component';
 import { LanguageSwitcherComponent } from '@common/components/language-switcher/language-switcher.component';
 import { AccountMenuComponent } from '@common/components/account-menu/account-menu.component';
+import { UserService } from '@modules/users/services';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     SideBarComponent,
     TuiButton,
@@ -30,6 +34,10 @@ import { AccountMenuComponent } from '@common/components/account-menu/account-me
 export class HeaderComponent {
   readonly user = input<User>();
 
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly userService= inject(UserService);
+  private readonly localizationService= inject(LocalizationService);
+
   readonly #sideBarMenuState = signal(false);
   readonly sideBarMenuState = this.#sideBarMenuState.asReadonly()
 
@@ -37,10 +45,9 @@ export class HeaderComponent {
     this.#sideBarMenuState.set(value);
   }
 
-  // // TODO Move change lang to localization service
-  // onLangChange(lang: Language) {
-  //   this.usersHttpService.updateUserLang(lang)
-  //     .pipe(take(1), takeUntilDestroyed(this.destroyRef))
-  //     .subscribe(() => this.loadingService.updateRefresh());
-  // }
+  onLanguageChange(lang: Language) {
+    this.userService.updateLang(lang)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.localizationService.changeLang(lang));
+  }
 }

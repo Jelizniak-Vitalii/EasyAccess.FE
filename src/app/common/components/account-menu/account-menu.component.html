@@ -26,6 +26,7 @@
        class="account-menu__item"
        iconStart="@tui.settings"
        [routerLink]="'/settings'"
+       (click)="updateDropDownOpen(!isDropdownOpen())"
      >
        {{'general.settings' | translate}}
      </button>
@@ -37,7 +38,7 @@
        appearance="flat"
        class="account-menu__item"
        iconStart="@tui.log-out"
-       (click)="authStore.logout()"
+       (click)="authStore.logout(); updateDropDownOpen(!isDropdownOpen())"
      >
        {{'general.logout' | translate}}
      </button>

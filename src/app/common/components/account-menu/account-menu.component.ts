@@ -38,7 +38,7 @@ export class AccountMenuComponent {
   readonly #isDropdownOpen = signal(false);
 
   readonly isDropdownOpen = this.#isDropdownOpen.asReadonly();
-  readonly shortUserName = computed(() => (this.user() as User).firstName?.[0] + (this.user() as User).lastName?.[0]);
+  readonly shortUserName = computed(() => (this.user() as User)?.firstName?.[0] + (this.user() as User)?.lastName?.[0]);
 
   updateDropDownOpen(value: boolean): void {
     this.#isDropdownOpen.set(value);

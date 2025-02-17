@@ -3,7 +3,7 @@
     tuiIconButton
     type="button"
     iconStart="@tui.menu"
-    appearance="flat"
+    appearance="icon"
     size="xs"
     class="header__side-bar-open-icon"
     (click)="updateSideBarMenuState(true)"
@@ -11,16 +11,18 @@
 
   <div class="header__actions">
     <app-language-switcher
-    ></app-language-switcher>
+      (langChange)="onLanguageChange($event)"
+    />
     <app-account-menu
       [user]="user()"
-    ></app-account-menu>
+    />
   </div>
 
   <tui-drawer
     *tuiPopup="sideBarMenuState()"
     direction="left"
     class="header__side-bar-wrapper"
+    [overlay]="true"
     (click.self)="updateSideBarMenuState(false)"
   >
     <div class="header__side-bar-header">
@@ -29,12 +31,14 @@
         type="button"
         class="header__menu-icon"
         iconStart="@tui.circle-x"
-        appearance="flat"
+        appearance="icon"
         size="m"
         (click)="updateSideBarMenuState(false)"
       ></button>
     </div>
 
-    <app-side-bar></app-side-bar>
+    <app-side-bar
+      (selectItem)="updateSideBarMenuState(false)"
+    />
   </tui-drawer>
 </header>

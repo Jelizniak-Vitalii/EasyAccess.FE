@@ -40,7 +40,7 @@ export const AuthStore = signalStore(
           map(user => patchState(store, () => ({ user, isAuthenticated: true }))),
           finalize(() => {
             patchState(store, (state) => ({ ...state, isInit: true }));
-            router.navigate([appConfig.defaultRoute], {queryParams: activatedRoute.snapshot.queryParams});
+            router.navigate([appConfig.defaultRoute]);
             spinnerService.hide();
           })
         ))
