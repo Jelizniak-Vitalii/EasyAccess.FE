@@ -5,10 +5,11 @@ import { appConfig } from '@configs/index';
 import { AuthStore } from '@stores/auth.store';
 
 export const authGuard: CanActivateFn = () => {
-  const router = inject(Router);
   const authStore = inject(AuthStore);
-  console.log(authStore.isAuthenticated());
+
   if (authStore.isAuthenticated()) {
+    const router = inject(Router);
+
     router.navigate([appConfig.defaultRoute]);
 
     return false;
